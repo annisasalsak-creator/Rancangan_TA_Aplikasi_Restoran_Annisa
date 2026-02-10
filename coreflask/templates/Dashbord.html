@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Pelanggan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+</head>
+<body>
+
+
+<div class="sidebar">
+    <div class="logo">Restoran TA</div>
+    <a href="{{ url_for('menu') }}">Menu</a>
+    <a href="{{ url_for('pesanan') }}">Pesanan</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+
+<div class="main">
+    <h1>Daftar Menu</h1>
+
+    {% if menu %}
+        <div class="menu-grid">
+            {% for item in menu %}
+                <div class="menu-card">
+                    <h3>{{ item.nama_menu }}</h3>
+                    <img src="{{ url_for('static', filename='images/' ~ item.gambar) }}" alt="{{ item.nama_menu }}">
+                    <p>Harga: Rp {{ "{:,}".format(item.harga) }}</p>
+
+                    {% if session.get('id_pelanggan') %}
+                        <form method="post" action="{{ url_for('pesan_menu') }}">
+                            <input type="hidden" name="id_menu" value="{{ item.id_menu }}">
+                            <input type="number" name="jumlah" value="1" min="1"><br><br>
+                            <button type="submit">Tambah Pesanan</button>
+                        </form>
+                    {% else %}
+                        <a href="{{ url_for('detail_menu', id_menu=item.id_menu) }}">Lihat Detail</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Menu kosong.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

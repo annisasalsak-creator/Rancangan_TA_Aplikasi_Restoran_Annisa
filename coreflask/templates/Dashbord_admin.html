@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #8b4513;
+            color: white;
+        }
+        a.button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
+        a.edit { background: #1e90ff; }
+        a.delete { background: #ff4c4c; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Admin Restoran TA</div>
+        <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <div class="main">
+        <div class="pesanan-container">
+            <h1>Data Menu</h1>
+            <table>
+                <tr>
+                    <th>Nama Menu</th>
+                    <th>Harga</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+                {% for m in menu %}
+                <tr>
+                    <td>{{ m.nama_menu }}</td>
+                    <td>Rp {{ "{:,}".format(m.harga) }}</td>
+                    <td>{{ m.status }}</td>
+                    <td>
+                        <a class="button edit" href="{{ url_for('edit_menu', id_menu=m.id_menu) }}">Edit</a>
+                        <a class="button delete" href="{{ url_for('hapus_menu', id_menu=m.id_menu) }}" onclick="return confirm('Yakin ingin menghapus menu ini?')">Hapus</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <h1>Data Pesanan</h1>
+            <table>
+                <tr>
+                    <th>Pelanggan</th>
+                    <th>Nama Menu</th>
+                    <th>Jumlah</th>
+                    <th>Total Harga</th>
+                    <th>Status</th>
+                </tr>
+                {% for p in pesanan %}
+                <tr>
+                    <td>{{ p.username }}</td>
+                    <td>{{ p.nama_menu }}</td>
+                    <td>{{ p.jumlah }}</td>
+                    <td>Rp {{ "{:,}".format(p.total_harga) }}</td>
+                    <td>{{ p.status_pesanan }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

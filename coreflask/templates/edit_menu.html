@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+</head>
+<body>
+<div class="login-container">
+    <h2>Edit Menu</h2>
+    <form method="post">
+        <label>Nama Menu</label>
+        <input type="text" name="nama_menu" value="{{ menu.nama_menu }}" required>
+
+        <label>Harga</label>
+        <input type="number" name="harga" value="{{ menu.harga }}" required>
+
+        <label>Status</label>
+        <select name="status" required>
+            <option value="tersedia" {% if menu.status=='tersedia' %}selected{% endif %}>Tersedia</option>
+            <option value="tidak tersedia" {% if menu.status=='tidak tersedia' %}selected{% endif %}>Tidak Tersedia</option>
+        </select>
+
+        <button type="submit">Update</button>
+    </form>
+    <p><a href="{{ url_for('admin_dashboard') }}">Kembali ke Dashboard</a></p>
+</div>
+</body>
+</html>

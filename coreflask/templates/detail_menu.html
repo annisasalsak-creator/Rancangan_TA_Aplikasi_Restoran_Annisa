@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ menu.nama_menu }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">Restoran TA</div>
+    <a href="{{ url_for('menu') }}">Menu</a>
+    <a href="{{ url_for('pesanan') }}">Pesanan</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+
+<div class="detail-container">
+    <h2>{{ menu.nama_menu }}</h2>
+    <img src="{{ url_for('static', filename='images/' ~ menu.gambar) }}" alt="{{ menu.nama_menu }}">
+    <p><strong>Harga:</strong> Rp {{ menu.harga }}</p>
+    <p><strong>Status:</strong> {{ menu.status }}</p>
+
+    {% if session.get('id_pelanggan') %}
+    <form method="post" action="{{ url_for('pesan_menu') }}">
+        <input type="hidden" name="id_menu" value="{{ menu.id_menu }}">
+        <label>Jumlah:</label>
+        <input type="number" name="jumlah" value="1" min="1"><br><br>
+        <button type="submit">Tambah Pesanan</button>
+    </form>
+    {% else %}
+    <p>Silakan <a href="{{ url_for('login') }}">login</a> untuk memesan menu ini.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

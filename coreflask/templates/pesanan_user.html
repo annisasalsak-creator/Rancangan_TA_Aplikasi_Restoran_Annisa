@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesanan Saya</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Restoran Annisa</div>
+        <a href="{{ url_for('menu') }}">Menu</a>
+        <a href="{{ url_for('pesanan') }}">Pesanan</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <div class="main">
+        <div class="pesanan-container">
+            <h1>Pesanan Anda</h1>
+            <table>
+                <tr>
+                    <th>Nama Menu</th>
+                    <th>Jumlah</th>
+                    <th>Total Harga</th>
+                    <th>Status</th>
+                </tr>
+                {% for p in pesanan %}
+                <tr>
+                    <td>{{ p.nama_menu }}</td>
+                    <td>{{ p.jumlah }}</td>
+                    <td>Rp {{ p.total_harga }}</td>
+                    <td>{{ p.status_pesanan }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <h2>Grand Total: Rp {{ grand_total }}</h2>
+            <form method="post" action="{{ url_for('konfirmasi') }}">
+                <button type="submit">Konfirmasi Pesanan</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

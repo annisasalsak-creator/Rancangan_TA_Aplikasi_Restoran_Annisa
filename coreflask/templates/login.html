@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+    <style>
+        body {
+            margin:0;
+            padding:0;
+            min-height:100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                        url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .login-container {
+            background:#fff8f0;
+            padding:50px 50px;
+            border-radius:16px;
+            width:400px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.4);
+            text-align:center;
+        }
+        .login-container h2 {
+            font-family:'Playfair Display', serif;
+            font-size:28px;
+            color:#5a2e0f;
+            margin-bottom:25px;
+        }
+        .login-container label {
+            display:block;
+            text-align:left;
+            margin-bottom:6px;
+            font-weight:500;
+            color:#4a2c1a;
+        }
+        .login-container input, .login-container select {
+            width:100%;
+            padding:14px;
+            margin-bottom:20px;
+            border-radius:10px;
+            border:1px solid #c9a77d;
+            font-size:16px;
+        }
+        .login-container button {
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:30px;
+            background:linear-gradient(135deg,#8b4513,#5a2e0f);
+            color:#fff;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+        .login-container button:hover {
+            background:linear-gradient(135deg,#a0522d,#6b3a1a);
+            transform: translateY(-2px);
+        }
+        .login-container p {
+            margin-top:15px;
+            font-size:14px;
+            color:#5a2e0f;
+        }
+        .login-container a {
+            color:#8b4513;
+            text-decoration:none;
+        }
+        .login-container a:hover {
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="error">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Belum punya akun? <a href="{{ url_for('register') }}">Register di sini</a></p>
+</div>
+</body>
+</html>

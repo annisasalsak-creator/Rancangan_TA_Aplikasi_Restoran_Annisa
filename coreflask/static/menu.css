@@ -1,0 +1,324 @@
+
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background: linear-gradient(180deg, #5a2e0f, #8b4513);
+    padding: 25px 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+    margin-left: 260px; /* sesuaikan dengan lebar sidebar */
+    padding: 30px;
+}
+
+/* ===== GRID MENU ===== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+/* ===== MENU CARD ===== */
+.menu-card {
+    background: #fff8f0;
+    border: 2px solid #c9a77d;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    text-align: center;
+    overflow: hidden;
+    transition: 0.3s ease;
+    width: 100%;
+    max-width: 260px;
+}
+
+.menu-card:hover {
+    transform: translateY(-6px);
+    border-color: #8b4513;
+}
+
+.menu-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.menu-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: #5a2e0f;
+    margin: 12px 0 6px;
+}
+
+.menu-card p {
+    color: #8b4513;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.menu-card button {
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #8b4513, #5a2e0f);
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-card button:hover {
+    background: linear-gradient(135deg, #a0522d, #6b3a1a);
+}
+
+/* ===== DETAIL MENU / FORM ===== */
+.detail-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff8f0;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    text-align: center;
+}
+
+.detail-container h2 {
+    font-family: 'Playfair Display', serif;
+    color: #5a2e0f;
+    margin-bottom: 20px;
+}
+
+.detail-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.detail-container label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.detail-container input[type="number"],
+.detail-container input[type="text"],
+.detail-container input[type="password"],
+.detail-container select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #c9a77d;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.detail-container input[type="number"] {
+    width: 60px;
+    text-align: center;
+}
+
+.detail-container button {
+    background: linear-gradient(135deg, #8b4513, #5a2e0f);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.detail-container button:hover {
+    background: linear-gradient(135deg, #a0522d, #6b3a1a);
+}
+
+/* ===== LOGIN / REGISTER FORM ===== */
+.login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 40px;
+    background: #fff8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+.login-container h2 {
+    font-family: 'Playfair Display', serif;
+    color: #5a2e0f;
+    margin-bottom: 25px;
+}
+
+.login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #8b4513;
+}
+
+.login-container input,
+.login-container select {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #c9a77d;
+    font-size: 16px;
+}
+
+.login-container input:focus,
+.login-container select:focus {
+    outline: none;
+    border-color: #8b4513;
+    box-shadow: 0 0 5px rgba(139,69,19,0.5);
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #8b4513, #5a2e0f);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-container button:hover {
+    background: linear-gradient(135deg, #a0522d, #6b3a1a);
+}
+
+.login-container p {
+    margin-top: 15px;
+    color: #5a2e0f;
+    font-size: 14px;
+}
+
+.login-container a {
+    color: #8b4513;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* ===== PESANAN USER ===== */
+.pesanan-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #fff8f0;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+.pesanan-container h1 {
+    font-family: 'Playfair Display', serif;
+    color: #5a2e0f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pesanan-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.pesanan-container table th,
+.pesanan-container table td {
+    padding: 12px;
+    border: 1px solid #c9a77d;
+    text-align: center;
+}
+
+.pesanan-container table th {
+    background: #8b4513;
+    color: #fff;
+}
+
+.pesanan-container h2 {
+    text-align: right;
+    color: #5a2e0f;
+    margin-bottom: 20px;
+}
+
+.pesanan-container button {
+    display: block;
+    margin: auto;
+    background: linear-gradient(135deg, #8b4513, #5a2e0f);
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.pesanan-container button:hover {
+    background: linear-gradient(135deg, #a0522d, #6b3a1a);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 15px;
+    }
+
+    .sidebar a {
+        margin-bottom: 0;
+        padding: 10px 12px;
+    }
+}
